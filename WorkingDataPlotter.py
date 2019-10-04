@@ -68,6 +68,13 @@ def add(x,y,z,fig,ax, xGround = None, yGround = None, zGround = None, xlim = Non
     ####################
     
     # This is for the live plot (Red Dotted Line)
+    orix = []
+    oriy = []
+    oriz = []
+    orix.append(x[0])
+    oriy.append(y[0])
+    oriz.append(z[0])
+    ax.plot(orix, oriy, oriz, 'bo')
     ax.plot(x,y,z, '--r', label='Live Plot')
     
     # This is or the Ground Truth Plot (Green Solid Line)
@@ -195,4 +202,4 @@ def connection(ipaddress, port, csvName,  topicfilter = None, groundtruthCSV = N
         add(xs,ys,zs,fig,ax, xGround, yGround, zGround, )
         counter += 1
 
-connection("198.18.2.7", "5556", "coords2.csv", "PREFIX-BFT-INSERT", "coords.csv")
+connection("198.18.2.2", "5556", "coords2.csv", "PREFIX-BFT-INSERT", "coords.csv")
