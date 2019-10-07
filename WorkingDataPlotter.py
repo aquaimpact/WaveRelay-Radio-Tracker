@@ -194,12 +194,20 @@ def connection(ipaddress, port, csvName,  topicfilter = None, groundtruthCSV = N
         #################################
         #  Preparing data for plotting  #
         #################################
-        xs.append(float(xCoord))
-        ys.append(float(yCoord))
-        zs.append(float(altitude))
         
-        # Plotting the graph for each point
-        add(xs,ys,zs,fig,ax, xGround, yGround, zGround, )
+        numberx = float(xCoord)
+        numbery = float(yCoord)
+
+        if numberx != 0 and numbery != 0:
+            xs.append(float(xCoord))
+            ys.append(float(yCoord))
+            zs.append(float(altitude))
+            
+            # Plotting the graph for each point
+            add(xs,ys,zs,fig,ax, xGround, yGround, zGround)
+        else:
+            print("Please Initialise Location!")
+            
         counter += 1
 
 connection("198.18.2.2", "5556", "coords2.csv", "PREFIX-BFT-INSERT", "coords.csv")
